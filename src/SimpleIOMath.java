@@ -4,6 +4,7 @@ import java.util.Scanner;
  * Asks the user questions and answers in Michael Jackson song
  * @version 09.17.2025
  * @author Kayla Cao
+ * Input check buffer edited from ScannerTest
  */
 public class SimpleIOMath {
     private String name;
@@ -15,7 +16,7 @@ public class SimpleIOMath {
      */
     public void promptUser() {
         Scanner in = new Scanner(System.in);
-        while(true) {
+        while (true) {
             try {
                 System.out.print("Question 1: What is your name? ");
                 String nameInput = in.nextLine().trim();
@@ -26,12 +27,12 @@ public class SimpleIOMath {
                 name = nameInput;  // parse and store
                 break;
             }
-            catch(Exception e){
+            catch (Exception e) {
                 System.out.println("Invalid input");
             }
         }
 
-        while(true) {
+        while (true) {
             try {
                 System.out.print("Question 2: How old are you? ");
                 String ageInput = in.nextLine().trim();
@@ -47,12 +48,12 @@ public class SimpleIOMath {
                     System.out.println("Age must be greater than zero");
                 }
             }
-            catch(Exception e){
+            catch (Exception e) {
                 System.out.println("Invalid input, enter a valid integer");
             }
         }
 
-        while(true) {
+        while (true) {
             try {
                 System.out.print("Question 3: What is your favorite number? ");
                 String favNumInput = in.nextLine().trim();
@@ -63,7 +64,7 @@ public class SimpleIOMath {
                 favNumber = Integer.parseInt(favNumInput);  // parse and store
                 break;
             }
-            catch(Exception e){
+            catch (Exception e) {
                 System.out.println("Invalid input, enter a valid integer");
             }
         }
@@ -88,9 +89,9 @@ public class SimpleIOMath {
      * Summarize the conversation
      */
     public void printInfo() {
-        System.out.println("Your name is: "+name);
-        System.out.println("Your age is: "+age);
-        System.out.println("At your next birthday, you will turn "+(age+1) + ".");
+        System.out.println("Your name is: " + name);
+        System.out.println("Your age is: " + age);
+        System.out.println("At your next birthday, you will turn " + (age+1) + ".");
 
         if  (firstPrimeFactor() == -1) {
             System.out.println("1 doesn't have any prime factors.");
@@ -100,7 +101,7 @@ public class SimpleIOMath {
         }
 
         System.out.println("Your favorite number is: " + favNumber);
-        System.out.println("Your favorite number squared is: " + favNumber * favNumber);
+        System.out.println("Your favorite number squared is: " + (favNumber*favNumber));
     }
 
     /**
@@ -108,18 +109,18 @@ public class SimpleIOMath {
      * @param args command line arguments, if needed
      */
     public static void main(String[] args) {
-        System.out.println("* Sit yourself down, take a seat *\n" +
-                "* All you gotta do is repeat after me *");
-        SimpleIOMath simpleIOMath = new SimpleIOMath();
-        simpleIOMath.promptUser();
+        SimpleIOMath app = new SimpleIOMath();
+        System.out.println("""
+                * Sit yourself down, take a seat *
+                "* All you gotta do is repeat after me *""");
+        app.promptUser();
         System.out.println("""
                 I'm gonna teach you how to sing it out
                 Come on, come on, come on
                 Let me tell you what it's all about
                 Reading, writing, arithmetic
                 Are the branches of the learning tree""");
-        simpleIOMath.printInfo();
-
-
+        app.printInfo();
+        System.out.println("* end of program *");
     }
 }
